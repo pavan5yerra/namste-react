@@ -44,19 +44,20 @@
 - Adding browsers List to the package json - https://browserslist.dev/?q=bGFzdCAyIHZlcnNpb25z
 
 ## Bundler do following things [We are using Parcel for this project - READ](https://parceljs.org/)
-- chunking
-- minification
-- caching  for faster builds
-- Bundling all the files
-- uglify all the files
-- Code Splitting
-- creating local server
-- File watching alogrithm in c++
-- caching things for you - Faster build for better developer experience
-- Image optimization
-- Consistent Hashing
-- Differential Bundling
-- Diagnostics
-- Error Handling
-- hot module replacement
-- Different prod and dev build
+- ***Development***
+    - Zero config
+    - Dev server with http & https
+    - Hot reloading - Uses file watching algorithm
+    - Diagnostics
+    - caching
+    - Multi core
+    - lazy Dev build
+- ***Production Optimized***
+    - Tree Shaking
+    - Minification
+    - Image optimization
+    - Compression
+    - code splitting
+    - content hashing
+    - Transpilation using babel
+    - Differencial bundling
