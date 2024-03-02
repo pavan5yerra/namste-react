@@ -38,7 +38,8 @@
 - ***using CDN link for using react is not a good way, So always use npm***
 - ***How to create production build..?***
     - npx parcel build  index.html
-
+## what is difference between npm && npx..?
+- ***npm is for installing the package , where as npx is for executing the package***
 ## What is Browser list ?
 - Its a library used for generating production build to eradicate cross browser compatiblity
 - Adding browsers List to the package json - https://browserslist.dev/?q=bGFzdCAyIHZlcnNpb25z

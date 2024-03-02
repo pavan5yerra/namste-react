@@ -1,7 +1,67 @@
 # points to remember 
-1. JSX is not an HTML
-2. JSX --> Babel Transpiler --> React.creatElement --> React Element (JS Object) --> render converts JSObject to HTMLElement
-3. Babel is Traspiler convert  JSX to JS engine understandble language
-4. what is React Functional Component  -- just a javascript Function
-5. React Element - const jsxHeading = <h1 className="head">Namstey React using JSX</h1>
-6. {} inside JSX  will santize youe code. It will stop from cross script attack
+
+##  Intro to JSX.
+***Jsx is not an HTML . Its an react Element***
+
+        const heading = React.createElement(h1,{id:"heading"},"Namstey React"); // using  react create Element
+
+        const heading = <h1 id="heading"> Namstey React</h1> // using JSX
+
+***The Above two statements are same & heading variable is react element***
+
+ >- JS Engine only understand ECMA script (current version- ES6)
+ >- ***So to make JS Engine understand JSX we need a translator called [Babel](https://babeljs.io/) using PARCEL as environment***
+ >- ***JSX --> Babel Transpiler --> React.creatElement --> React Element (JS Object) --> render converts JSObject to HTMLElement***
+ >- ***Jsx can execute any piece of javascript code  inside curly brackets , Its  similiar to injecting script in HTML using script tag***
+
+         const name = "pavan"
+         const heading = <h1 id="heading"> Namstey React {name} {2*2}</h1>
+
+- ***{} inside JSX  will santize youe code. It will stop from cross script attack***
+
+## what is React Functional Component ?
+***Functional component is  just a javascript Function***
+    
+        function Heading () {
+            return (
+                <h1>
+                Namstey React in functional component
+                </h1>
+            )
+        }
+        
+        const Heading = () => (
+                <h1>
+                    Namstey React in functional component
+                </h1>
+            )
+
+
+## Code Example
+        import React from "react";
+        import  ReactDOM from "react-dom/client";
+
+
+            const RestroCard = () => {
+                    return (
+                        <div className="res-card">
+                            <image alt="biryani" src=""/>
+                            <h3> Meghana Foods</h3>
+                            <h3>cusines</h3>
+                            
+                        </div>
+                    )
+                }
+
+            const AppLayout = () => {
+            return (
+                <div className="app"> 
+                     <!---We can call the RestroCard in any of the way--->
+                    <RestroCard/>
+                    <RestroCard> </RestroCard>
+                    {RestroCard()}
+                </div>
+            )
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<AppLayout/>);
