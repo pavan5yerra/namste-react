@@ -346,41 +346,41 @@
 
         it("should Load Restaurant Menu Component", async () => {
             await act(async () =>
-                render(
-                    <!-- As test case is switching between component we need include Browser Router context -->
-                <BrowserRouter>   
-                    <Provider store={appStore}>
-                    <Header />
-                    <RestaurantMenu />
-                    <Cart />
-                    </Provider>
-                </BrowserRouter>
-                )
-        );
+                    render(
+                        <!-- As test case is switching between component we need include Browser Router context -->
+                    <BrowserRouter>   
+                        <Provider store={appStore}>
+                        <Header />
+                        <RestaurantMenu />
+                        <Cart />
+                        </Provider>
+                    </BrowserRouter>
+                    )
+                );
 
-        <!-- Finding the birayni accordion component and click it -->
-        const accordionHeader = screen.getByText("Biriyani (5)");
-        fireEvent.click(accordionHeader);
+            <!-- Finding the birayni accordion component and click it -->
+            const accordionHeader = screen.getByText("Biriyani (5)");
+            fireEvent.click(accordionHeader);
 
-        <!-- Find the number of food items -->
-        expect(screen.getAllByTestId("foodItems").length).toBe(5);
+            <!-- Find the number of food items -->
+            expect(screen.getAllByTestId("foodItems").length).toBe(5);
 
-        <!-- get the cart items -->
-        expect(screen.getByText("Cart - (0 items)")).toBeInTheDocument();
+            <!-- get the cart items -->
+            expect(screen.getByText("Cart - (0 items)")).toBeInTheDocument();
 
-        <!-- Click on add buttons and check the cart item -->
-        const addBtns = screen.getAllByRole("button", { name: "Add +" });
-        fireEvent.click(addBtns[0]);
-        expect(screen.getByText("Cart - (1 items)")).toBeInTheDocument();
-        fireEvent.click(addBtns[1]);
-        expect(screen.getByText("Cart - (2 items)")).toBeInTheDocument();
+            <!-- Click on add buttons and check the cart item -->
+            const addBtns = screen.getAllByRole("button", { name: "Add +" });
+            fireEvent.click(addBtns[0]);
+            expect(screen.getByText("Cart - (1 items)")).toBeInTheDocument();
+            fireEvent.click(addBtns[1]);
+            expect(screen.getByText("Cart - (2 items)")).toBeInTheDocument();
 
 
-        <!-- click the cart item  -->
-        fireEvent.click(screen.getByRole("button", { name: "Clear Cart" }));
-        expect(screen.getAllByTestId("foodItems").length).toBe(5);
+            <!-- click the cart item  -->
+            fireEvent.click(screen.getByRole("button", { name: "Clear Cart" }));
+            expect(screen.getAllByTestId("foodItems").length).toBe(5);
 
-        expect(
-            screen.getByText("Cart is empty. Add Items to the cart!")
-        ).toBeInTheDocument();
+            expect(
+                screen.getByText("Cart is empty. Add Items to the cart!")
+            ).toBeInTheDocument();
     });
