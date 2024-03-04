@@ -1,4 +1,110 @@
-# Life Cycle Hook
+# Life Cycles
+
+![Life cycle Image ](./assets/lifecycle.png "Life Cycle")
+
+>- ***There are Three Stages - Mounting , Updating & Unmounting*** 
+>- ***In each stage there are two phases - Render & commit***
+>   - ***Render Phase***
+>       - Component initialization with dummy data
+>       - Component rendered or mounted to dom with dummy data
+>       - Reconciliation happens in this phase
+>       - render method is used in class component and returing the JSX in functional component
+>   - ***Commit Phase***
+>       -  Dom updation happens in this phase
+>       -  It do the batch updates to the DOM for Optimized performace
+>       -  we can do side effect in this phase like fetching API's , etc
+>       -  we use componentdidMount , componentDidUpdate , componentWillUnmount in class components and useEffect in functional components
+>- ***When we call setState the updating stage will be called***
+>- ***componentWillUmount will be called when the component leave the DOM***
+>- ***We can use componentWillUnmount  , useEffect will be use for clearing event , timeout and intervals***
+
+# Class components and its life cycles
+
+            class About extends Component {
+                constructor(props) {
+                    super(props);
+                    //console.log("Parent - constructor");
+                }
+                componentDidMount() {
+                    // Best place to make an Api call
+                    //console.log("Parent - componentDidMount");
+                }
+                render() {
+                    //console.log("Parent - render");
+                    return (
+                    <div>
+                        <h1>About Us Page</h1>
+                        <p>
+                        This is the Namaste React Live Course Chapter 07 - Finding the Path 🚀
+                        </p>
+                        <ProfileFunctionalComponet />
+                    </div>
+                    );
+                 }
+                }
+***Output***
+         
+>- ***Parent Constructor***
+>- ***Parent render***
+>   - ***First Child constructor***
+>   - ***First Child render***
+>   - ***Second Child constructor***
+>   - ***Second Child render***
+>   - ***first Child componentDidMount***
+>   - ***Second Child componentDidMount***
+>- ***Parent componentDidMount***
+
+
+
+
+## Example of using all life cycle method in class components
+
+        import React from "react";
+        class Profile extends React.Component {
+        constructor(props) {
+            super(props);
+            // Create State
+            this.state = {
+            userInfo: {
+                name: "Dummy Name",
+                location: "Dummy Location",
+            },
+            };
+            //console.log("Child - Constructor" + this.props.name);
+        }
+        componentDidMount() {
+            this.timer = setInterval(() => {
+            console.log("NAMASTE REACT OP ");
+            }, 1000);
+            //console.log("Child - componentDidMount");
+        }
+        componentDidUpdate(prevProps, prevState) {
+            if (this.state.count !== prevState.count) {
+            //
+            }
+            if (this.state.count2 !== prevState.count2) {
+            // code
+            }
+            console.log("Component Did Update");
+        }
+        componentWillUnmount() {
+            clearInterval(this.timer);
+            //console.log("ComponentWillUnmount");
+        }
+        render() {
+            const { count } = this.state;
+            //console.log("Child - render" + this.props.name);
+            return (
+            <div>
+                <h1> Profile Class Component </h1>
+                <img src={this.state.userInfo.avatar_url} />
+                <h2>Name: {this.state.userInfo.name}</h2>
+                <h2>Location: {this.state.userInfo.location}</h2>
+            </div>
+            );
+        }
+        }
+
 
 >- ***React Hooks is not a migic , its just an arrays [READ](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)***
 >- ***Please note useEffect will only called component render***
