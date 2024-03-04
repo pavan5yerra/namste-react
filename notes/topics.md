@@ -6,11 +6,7 @@
 >- ***useCallback***
 >- ***useContext***
 >- ***useRef***
->- ***customHook***
->- ***useReducer***
->- ***Redux***
->   - ***useDispatch***
->   - ***useSelector***
+>- ***customHooks***
 
 
 ## HOC -> Higher Order Components
@@ -213,7 +209,7 @@ ___
         );
         };
 
-## custom hook
+## custom hooks
 
 >- ***Custom Hooks let you share logic between components.***
 >- ***Custom Hooks must be named starting with use followed by a capital letter.***
@@ -224,3 +220,29 @@ ___
 >- ***Wrap event handlers received by custom Hooks into Effect Events.***
 >- ***Don’t create custom Hooks like useMount. Keep their purpose specific.***
 >- ***It’s up to you how and where to choose the boundaries of your code.***
+
+
+***CustomHook***
+        import { useState } from "react";
+        export const useCounter = () => {
+            const [count, setCount] = useState(0);
+            const counter = () => {
+                setCount((count) => count + 1);
+            };
+            return [count, counter];
+        };
+
+
+        import { useCounter } from "./customHook";
+        export const Comp2 = () => {
+            const [count, counter] = useCounter();
+            return (
+                <div>
+                <button onClick={counter}> Comp2 </button>
+                <p>display : {count} </p>
+                </div>
+            );
+        };
+
+
+>- ***Please go through this sandbox  for [demo](https://codesandbox.io/p/sandbox/react-practice-i981uj)***
