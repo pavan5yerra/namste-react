@@ -87,6 +87,7 @@ ___
 >- ***It will call the function only when dependecy array changes***
 
 ***syntax***
+
         const cachedValue = useMemo(calculateValue, dependencies)
 
 
@@ -107,6 +108,7 @@ ___
 >- ***It returns a function which can be used***
 
 ***syntax***
+
             const cachedFn = useCallback(fn, dependencies)
 
 ***code***
@@ -223,6 +225,7 @@ ___
 
 
 ***CustomHook***
+
         import { useState } from "react";
         export const useCounter = () => {
             const [count, setCount] = useState(0);

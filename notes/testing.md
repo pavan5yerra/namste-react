@@ -41,6 +41,7 @@
 ### sum of two variable
 
 ***sum.js***
+
         export const sum = (a, b) => {
             return a + b;
         };
@@ -289,6 +290,7 @@
         });
 
 ***Should filter Top Rated Restaurant***
+
         it("Should filter Top Rated Restaurant", async () => {
             await act(async () =>
                 render(
@@ -336,6 +338,7 @@
         import "@testing-library/jest-dom";
 
 ***mocking fetch function***
+
         global.fetch = jest.fn(() =>
             Promise.resolve({
                 json: () => Promise.resolve(MOCK_DATA_NAME),
