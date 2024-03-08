@@ -9,7 +9,7 @@
 >- ***Variables and event handlers don’t “survive” re-renders. Every render has its own event handlers.***
 >- ***Every render (and functions inside it) will always “see” the snapshot of the state that React gave to that render.***
 
-
+    ```js
         export default function Counter() {
         const [number, setNumber] = useState(0);
 
@@ -27,7 +27,7 @@
             </>
         )
         }
-
+    ```
         output is 1 because  , number value will only update on the rendering completes
 
 
@@ -44,6 +44,7 @@
 >- ***You can call setNumber(n => n + 1) like this***
 >- ***To update some state multiple times in one event, you can use setNumber(n => n + 1) updater function.***
 
+    ```js
         import { useState } from 'react';
 
         export default function Counter() {
@@ -60,17 +61,17 @@
             </>
         )
         }   
-
+    ```
         output will be  3.
 
 ***What happens if you replace state after updating it***
-
+    ```html
         <button onClick={() => {
             setNumber(number + 5);
             setNumber(n => n + 1);
             setNumber(42);
-        }}>
-
+        }}/>
+    ```
         //output is 42
 
 # [Updating Objects in state](https://react.dev/learn/updating-objects-in-state)
@@ -82,13 +83,16 @@
 
 ***What is mutation***
 >- ***change the contents of the object itself is called mutation***
+
+    ```js
         const [position, setPosition] = useState({ x: 0, y: 0 });
         position.x=5   // This is called muatation
-
+    ```
 
 ***Treat state as read-only***
 >- ***you should treat any JavaScript object that you put into state as read-only***
 
+    ```js
         const [position, setPosition] = useState({ x: 0, y: 0 });
         position.x=5   // This is called muatation and we shouldn't do it.
 
@@ -96,11 +100,12 @@
         nextPosition.x = 5;  
         nextPosition.y = 6;
         setPosition(nextPosition); 
+    ```
 
 
 ## Copying objects with the spread syntax
 
-
+        ```js
             const [person, setPerson] = useState({
                     firstName: 'Barbara',
                     lastName: 'Hepworth',
@@ -112,10 +117,11 @@
                 ...person, // Copy the old fields
                 firstName: "pavan" // But override this one
              });
-
+        ```
 
 ## Updating nested Objects 
 
+        ```js
             const [person, setPerson] = useState({
                 name: 'Niki de Saint Phalle',
                 artwork: {
@@ -135,7 +141,7 @@
                     city: 'New Delhi' // but in New Delhi!
                 }
                 });
-
+        ```
 # Updating Arrays in state
 
 >- ***Arrays are mutable in JavaScript, but you should treat them as immutable when you store them in state. Just like with objects***
