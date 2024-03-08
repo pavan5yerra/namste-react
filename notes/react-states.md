@@ -3,31 +3,30 @@
 ## [State as a snapshot](https://react.dev/learn/state-as-a-snapshot)
 
 >- ***setting state triggers new renders***
->- *** A state variable’s value never changes within a render, even if its event handler’s code is asynchronous***
+>- ***A state variable’s value never changes within a render, even if its event handler’s code is asynchronous***
 >- ***React stores state outside of your component, as if on a shelf.***
 >- ***When you call useState, React gives you a snapshot of the state for that render.***
 >- ***Variables and event handlers don’t “survive” re-renders. Every render has its own event handlers.***
 >- ***Every render (and functions inside it) will always “see” the snapshot of the state that React gave to that render.***
 
-    ```js
-        export default function Counter() {
-        const [number, setNumber] = useState(0);
+                export default function Counter() {
+                const [number, setNumber] = useState(0);
 
-        return (
-            <>
-            <h1>{number}</h1>
-            <button onClick={() => {
-                setNumber(number + 1);
-                setNumber(number + 1);
-                setNumber(number + 1);
-                 setTimeout(() => {
-                    alert(number);  // even after three seconds the value of number in the alert will be same
-                    }, 3000);
-            }}>+3</button>
-            </>
-        )
-        }
-    ```
+                    return (
+                        <>
+                        <h1>{number}</h1>
+                        <button onClick={() => {
+                            setNumber(number + 1);
+                            setNumber(number + 1);
+                            setNumber(number + 1);
+                            setTimeout(() => {
+                                alert(number);  // even after three seconds the value of number in the alert will be same
+                                }, 3000);
+                        }}>+3</button>
+                        </>
+                    )
+                }
+
         output is 1 because  , number value will only update on the rendering completes
 
 
@@ -44,7 +43,6 @@
 >- ***You can call setNumber(n => n + 1) like this***
 >- ***To update some state multiple times in one event, you can use setNumber(n => n + 1) updater function.***
 
-    ```js
         import { useState } from 'react';
 
         export default function Counter() {
@@ -61,17 +59,17 @@
             </>
         )
         }   
-    ```
+
         output will be  3.
 
 ***What happens if you replace state after updating it***
-    ```html
+    
         <button onClick={() => {
             setNumber(number + 5);
             setNumber(n => n + 1);
             setNumber(42);
         }}/>
-    ```
+    
         //output is 42
 
 # [Updating Objects in state](https://react.dev/learn/updating-objects-in-state)
@@ -84,15 +82,15 @@
 ***What is mutation***
 >- ***change the contents of the object itself is called mutation***
 
-    ```js
+    
         const [position, setPosition] = useState({ x: 0, y: 0 });
         position.x=5   // This is called muatation
-    ```
+    
 
 ***Treat state as read-only***
 >- ***you should treat any JavaScript object that you put into state as read-only***
 
-    ```js
+    
         const [position, setPosition] = useState({ x: 0, y: 0 });
         position.x=5   // This is called muatation and we shouldn't do it.
 
@@ -100,12 +98,12 @@
         nextPosition.x = 5;  
         nextPosition.y = 6;
         setPosition(nextPosition); 
-    ```
+    
 
 
 ## Copying objects with the spread syntax
 
-        ```js
+        
             const [person, setPerson] = useState({
                     firstName: 'Barbara',
                     lastName: 'Hepworth',
@@ -117,11 +115,10 @@
                 ...person, // Copy the old fields
                 firstName: "pavan" // But override this one
              });
-        ```
+        
 
 ## Updating nested Objects 
 
-        ```js
             const [person, setPerson] = useState({
                 name: 'Niki de Saint Phalle',
                 artwork: {
@@ -141,7 +138,7 @@
                     city: 'New Delhi' // but in New Delhi!
                 }
                 });
-        ```
+        
 # Updating Arrays in state
 
 >- ***Arrays are mutable in JavaScript, but you should treat them as immutable when you store them in state. Just like with objects***
@@ -153,6 +150,7 @@
 ## Adding to array 
 
 ***Adding item to array at the start***
+
         const [artists, setArtists] = useState([]);
         setArtists([
             { id: nextId++, name: name },
@@ -160,6 +158,7 @@
         ]);
             
 ***Adding item to array at the end***
+
          setArtists([
             ...artists, // Put old items at the start
              { id: nextId++, name: name }
