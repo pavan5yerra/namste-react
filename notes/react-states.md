@@ -144,7 +144,7 @@
 >- ***Arrays are mutable in JavaScript, but you should treat them as immutable when you store them in state. Just like with objects***
 
 ## Updating arrays without mutation
->- ***Please avoid below methods becuase they mutate the existing array  - (push, unshift ,pop ,shift ,splice ,reverse ,sort) ***
+>- ***Please avoid below methods becuase they mutate the existing array  - (push, unshift ,pop ,shift ,splice ,reverse ,sort)***
 >- ***Please Use below methods because they return new array - (concat,[...arr] ,filter , slice , map )***
 
 ## Adding to array 
