@@ -4,6 +4,8 @@
 ***Jsx is not an HTML . Its an react Element***
 
         const heading = React.createElement(h1,{id:"heading"},"Namstey React"); // using  react create Element
+        const para = React.createElement("h1", {}, "Hello iam react elemnt"); 
+        const h2 = React.createElement("div", {}, ["Hello iam react elemnt", para]); //using array of elements
 
         const heading = <h1 id="heading"> Namstey React</h1> // using JSX
 
