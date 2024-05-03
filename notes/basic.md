@@ -104,7 +104,18 @@
 - It stands for cross-origin resource sharing. It is a mechanism by which one webpage requests to another domain for fetching out the resource like audio, video, script, etc. from the third party server without leaking their credentials information.
 
 ***What is difference between React and ReactDOM ?***
-- React is core library , where as ReactDOM is used for manipulating the DOM.
+
+***React***
+>- ***Creating Reusable UI peices called  components***
+>- ***React operate on virtual representation of DOM called VDOM***
+>- ***React can determine most efficient way to update Broswers'DOM when data changes***
+
+***React DOM***
+>- ***Its a bridge between VDOM and browser DOM***
+>- ***It renders react components in to Actual DOM***
+>- ***ReactDOM is provides render method which is specific to web apps***
+>- ***By decoupling the core definitions of components from the platform-specific rendering logic***
+>- ***ReactDOM (web-specific app) , React Native (for mobile apps) or ReactVR (for virtual reality)***
 
 ***What is difference between react.development.js and react.production.js files via CDN?***
 - In production mode, compression and minification of Javascript and other resources happens to reduce size of the code which is not the case when it comes to development mode. Performance will be much faster in production mode when compared to development mode.
