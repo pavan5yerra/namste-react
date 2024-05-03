@@ -39,7 +39,14 @@
 - ***How to create production build..?***
     - npx parcel build  index.html
 ## what is difference between npm && npx..?
-- ***npm is for installing the package , where as npx is for executing the package***
+- ***npm is for installing , updating the packages***
+- ***It needs package.json && package-lock.json  to run an application***
+- ***To run an application we need npm run start***
+  
+
+>-***where as npx is for executing the package***
+>- ***Its a tool to execute the packages***
+
 
 ## What is Browser list ?
 - Its a library used for generating production build to eradicate cross browser compatiblity
