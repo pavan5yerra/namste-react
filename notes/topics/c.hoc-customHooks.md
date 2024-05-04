@@ -1,6 +1,6 @@
 ***Comparison - HOC vs Custom Hooks***
 
->- ***Purpose***: HOCs are primarily used for enhancing components with cross-cutting concerns, while Custom Hooks are used for encapsulating and reusing logic within components.
+>- ***Purpose***: HOCs are primarily used for enhancing components with cross-cutting concerns across the application flow, while Custom Hooks are used for encapsulating and reusing logic within components.
 >- ***Composition vs. Encapsulation***: HOCs focus on composition by wrapping components, while Custom Hooks focus on encapsulation by extracting logic into reusable functions.
 >- ***Flexibility***: HOCs can be more flexible in terms of manipulating props and composing multiple enhancements, while Custom Hooks are more focused on encapsulating specific logic.
 >- ***Syntax***: Custom Hooks are regular JavaScript functions, while HOCs are functions that return a new component.

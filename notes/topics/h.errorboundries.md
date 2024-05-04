@@ -12,31 +12,6 @@
 >- componentDidCatch(error, errorInfo): This lifecycle method is invoked after an error has been thrown by a child component during rendering. It provides the error boundary with information about the error and its component stack.
 
 
-
-***Error boundary in class components***
-```javascript
-    import React, { Component } from 'react';
-
-    class ErrorBoundary extends Component {
-        state = { hasError: false };
-
-        componentDidCatch(error, errorInfo) {
-            console.error('Error caught by ErrorBoundary:', error, errorInfo);
-            this.setState({ hasError: true });
-        }
-
-        render() {
-            if (this.state.hasError) {
-            return <h1>Something went wrong.</h1>;
-            }
-            return this.props.children;
-        }
-    }
-
-    export default ErrorBoundary;
-```
-***In React, error handling after the introduction of React Hooks (starting from React version 16.8) remains largely the same conceptually, but hooks offer some new possibilities and patterns for handling errors in functional components.***
-
 ***Error Boundary with Class Components:***
 
 ```javascript
@@ -60,6 +35,9 @@ class ErrorBoundary extends Component {
 
 export default ErrorBoundary;
 ```
+
+
+***In React, error handling after the introduction of React Hooks (starting from React version 16.8) remains largely the same conceptually, but hooks offer some new possibilities and patterns for handling errors in functional components.***
 
 
 ***Error Boundary with Functional Components and React Hooks:***

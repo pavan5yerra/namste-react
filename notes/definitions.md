@@ -13,7 +13,6 @@
 >- In JavaScript, lexical scope is the concept of determining the scope of a variable based on its declaration. 
 >- This means that the scope of a variable is determined by the block of code in which it is declared, not by the block of code in which it is used
 
-
 ***Promise***
 >- The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
 
@@ -22,6 +21,9 @@
 >- Redux is a pattern and library for managing and updating application state, using events called "actions". 
 >- Redux helps you manage "global" state - state that is needed across many parts of your application.
 >- The patterns and tools provided by Redux make it easier to understand when, where, why, and how the state in your application is being updated, and how your application logic will behave when those changes occur
+
+***Flux***
+>- https://sunscrapers.com/blog/flux-and-redux-differences/
 
 ***useRef***
 >- The useRef is a hook that allows to directly create a reference to the DOM element in the functional component.

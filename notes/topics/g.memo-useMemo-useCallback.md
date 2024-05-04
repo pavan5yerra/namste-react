@@ -21,9 +21,9 @@
 
 
 ***Business Logic:***
-memo: Less suitable for complex business logic or data transformations within components.
-useMemo and useCallback: More appropriate for memoizing complex calculations or callback functions related to business logic.
+>- memo: Less suitable for complex business logic or data transformations within components.
+>- useMemo and useCallback: More appropriate for memoizing complex calculations or callback functions related to business logic.
 
 ***Trade-offs:***
-memo can be a quick optimization for preventing re-renders of entire components, but it's less flexible than useMemo and useCallback.
-useMemo and useCallback offer more granular control but require careful consideration of dependencies to avoid unnecessary recalculations.
+>- memo can be a quick optimization for preventing re-renders of entire components, but it's less flexible than useMemo and useCallback.
+>- useMemo and useCallback offer more granular control but require careful consideration of dependencies to avoid unnecessary recalculations.
