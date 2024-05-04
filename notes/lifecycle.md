@@ -19,7 +19,7 @@
 >- ***We can use componentWillUnmount  , useEffect will be use for clearing event , timeout and intervals***
 
 # Class components and its life cycles
-
+```javascript
             class About extends Component {
                 constructor(props) {
                     super(props);
@@ -42,6 +42,8 @@
                     );
                  }
                 }
+
+```
 ***Output***
          
 >- ***Parent Constructor***
@@ -58,7 +60,7 @@
 
 
 ## Example of using all life cycle method in class components
-
+```javascript
         import React from "react";
         class Profile extends React.Component {
         constructor(props) {
@@ -104,7 +106,7 @@
             );
         }
         }
-
+```
 
 >- ***React Hooks is not a migic , its just an arrays [READ](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)***
 >- ***Please note useEffect will only called component render***
