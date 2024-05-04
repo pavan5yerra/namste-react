@@ -53,6 +53,7 @@
 >- ***Redux is third party library for react , which acts as reducer***
 >- ***Redux contains three parts store , actions and reducer***
 >- ***Its used for centralized state management***
+>- ***Please Read more about redux here https://sunscrapers.com/blog/flux-and-redux-differences/***
 >- ***Thunk is middleware which is used to deal with side effect while updating the state***
 
 
