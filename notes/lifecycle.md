@@ -143,7 +143,7 @@
 >   - ***Its return an function in useEffect***
 >   - ***We can use / write some code in  the return function to clear the eventhandlers or heavy operation once its work is done***
 
-
+```javascript
         import { useEffect, useState } from "react";
 
         export const LifeCycles = () => {
@@ -186,11 +186,11 @@
 
         return <div>{data}</div>;
         };
-
+```
 
 
 ## making fetch request using useEffect hook
-
+```javascript
         import {useState , useEffect} from 'react';
 
         <!-- intial loading of state which empty object -->
@@ -213,3 +213,4 @@
                 {data.map((item) => <li key={item.id}>{item.name} </li>)}
             </div>
         )
+```

@@ -8,7 +8,7 @@
 >- ***When you call useState, React gives you a snapshot of the state for that render.***
 >- ***Variables and event handlers don’t “survive” re-renders. Every render has its own event handlers.***
 >- ***Every render (and functions inside it) will always “see” the snapshot of the state that React gave to that render.***
-
+```javascript
                 export default function Counter() {
                 const [number, setNumber] = useState(0);
 
@@ -26,8 +26,8 @@
                         </>
                     )
                 }
-
-        output is 1 because  , number value will only update on the rendering completes
+```
+***output is 1 because  , number value will only update on the rendering completes***
 
 
 ## [Queueing a series of state updates](https://react.dev/learn/queueing-a-series-of-state-updates)
@@ -43,6 +43,7 @@
 >- ***You can call setNumber(n => n + 1) like this***
 >- ***To update some state multiple times in one event, you can use setNumber(n => n + 1) updater function.***
 
+```javascript
         import { useState } from 'react';
 
         export default function Counter() {
@@ -60,18 +61,19 @@
         )
         }   
 
-        output will be  3.
+     //   output will be  3.
+```
 
 ***What happens if you replace state after updating it***
-    
+```javascript    
         <button onClick={() => {
             setNumber(number + 5);
             setNumber(n => n + 1);
             setNumber(42);
         }}/>
-    
+   
         //output is 42
-
+```
 # [Updating Objects in state](https://react.dev/learn/updating-objects-in-state)
 
 >- ***State can hold any kind of JavaScript value, including objects.***
@@ -82,14 +84,14 @@
 ***What is mutation***
 >- ***change the contents of the object itself is called mutation***
 
-    
+ ```javascript   
         const [position, setPosition] = useState({ x: 0, y: 0 });
         position.x=5   // This is called muatation
-    
+``` 
 
 ***Treat state as read-only***
 >- ***you should treat any JavaScript object that you put into state as read-only***
-
+```javascript
     
         const [position, setPosition] = useState({ x: 0, y: 0 });
         position.x=5   // This is called muatation and we shouldn't do it.
@@ -98,11 +100,11 @@
         nextPosition.x = 5;  
         nextPosition.y = 6;
         setPosition(nextPosition); 
-    
+```
 
 
 ## Copying objects with the spread syntax
-
+```javascript
         
             const [person, setPerson] = useState({
                     firstName: 'Barbara',
@@ -116,9 +118,9 @@
                 firstName: "pavan" // But override this one
              });
         
-
+```
 ## Updating nested Objects 
-
+```javascript
             const [person, setPerson] = useState({
                 name: 'Niki de Saint Phalle',
                 artwork: {
@@ -138,7 +140,7 @@
                     city: 'New Delhi' // but in New Delhi!
                 }
                 });
-        
+  ```      
 # Updating Arrays in state
 
 >- ***Arrays are mutable in JavaScript, but you should treat them as immutable when you store them in state. Just like with objects***
@@ -150,22 +152,22 @@
 ## Adding to array 
 
 ***Adding item to array at the start***
-
+```javascript
         const [artists, setArtists] = useState([]);
         setArtists([
             { id: nextId++, name: name },
             ...artists // Put old items at the end
         ]);
-            
+```          
 ***Adding item to array at the end***
-
+```javascript
          setArtists([
             ...artists, // Put old items at the start
              { id: nextId++, name: name }
         ]);
-
+```
 ## Removing from an array
-
+```javascript
         let initialArtists = [
             { id: 0, name: 'Marta Colvin Andrade' },
             { id: 1, name: 'Lamidi Olonade Fakeye'},
@@ -174,15 +176,15 @@
 
         setArtists(artists.filter(a => a.id !=0)); // removes items with id 0
 
-
+```
 ## Transforming an array
-
+```javascript
         const [data,setData] = useState([1,2,3,4]);
         setData(data.map(item) => item*2);
-
+```
 
 ## Reversing an Array
-
+```javascript
         const initialList = [
             { id: 0, title: 'Big Bellies' },
             { id: 1, title: 'Lunar Landscape' },
@@ -195,12 +197,12 @@
         nextList.reverse(); // reverse the array 
         setList(nextList); // then update the state
 
-
+```
 
 # [Updating objects inside arrays](https://react.dev/learn/updating-arrays-in-state)
 
 >- ***When updating nested state, you need to create copies from the point where you want to update, and all the way up to the top level***
-
+```javascript
 
         const initialProducts = [{
             id: 0,
@@ -221,3 +223,4 @@
             if(product.id===1) return {...product , count: product.count+1}  //updating count  with id value 1
             else return product;
         }))
+```

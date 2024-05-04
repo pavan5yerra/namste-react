@@ -72,7 +72,7 @@
 ## Why we need keys in React? When do we need keys in React?
 >- ***We need keys to make element unique and it helps react to identify the element***
 >- ***We need keys when we try to render multiple duplicate elements***
-
+```javascript
        const RestroCard = () => {
         const data= []
         return (
@@ -84,6 +84,7 @@
         </React.Fragment>
         ))
     }
+```
 ## Can we use index as keys in React?
 >- ***Please prefer to use unique id's from coming for data instead of indexes***
 >- ***If we use indexes ,in some usecases it will tamper while updating/deleting/adding the elements in list***
