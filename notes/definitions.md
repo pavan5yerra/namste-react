@@ -2,6 +2,12 @@
 >- A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).
 >- A closure is a function having access to the parent scope, even after the parent function has closed. 
 
+***Practical use of closures***
+>- Using private methods and variables
+>- maintaining state between function calls
+>- https://www.geeksforgeeks.org/what-is-the-practical-use-for-a-closure-in-javascript/
+
+
 
 ***Lexical scope***
 >- In JavaScript, lexical scope is the concept of determining the scope of a variable based on its declaration. 
@@ -14,18 +20,24 @@
 
 ***Redux***
 >- Redux is a pattern and library for managing and updating application state, using events called "actions". 
-
+>- Redux helps you manage "global" state - state that is needed across many parts of your application.
+>- The patterns and tools provided by Redux make it easier to understand when, where, why, and how the state in your application is being updated, and how your application logic will behave when those changes occur
 
 ***useRef***
 >- The useRef is a hook that allows to directly create a reference to the DOM element in the functional component.
 >- These values will sustain between  component renders.
+>- You can use useRef to store a value that persists across renders but doesn't trigger a re-render when updated. 
+>- This can be useful when you need to keep track of previous values without triggering unnecessary renders
 
 ***useMemo***
 >- useMemo is a valuable tool in the React framework, designed to optimize performance by memoizing expensive computations. With useMemo , React can store the result of a function call and reuse it when the dependencies of that function haven't changed, rather than recalculating the value on every render.
 
 ***useCallback***
->- The useCallback hook is a built-in hook in React that lets you memoize a callback function by preventing it from being recreated on every render.
-
+>- useCallback is a hook that can be used to memoize callback functions.
+>- Memoization is a technique that can be used to cache the results of a function call so that it does not need to be re-evaluated on every render.
+>- Memoization can be used to improve the performance of React components by preventing unnecessary re-renders.
+>- useCallback is most commonly used to memoize callback functions that are passed to child components.
+>- useCallback can also be used to memoize callback functions that are used in other contexts, such as ***event handlers*** and timers.
 
 ***useEffect***
 >- The useEffect Hook allows you to perform side effects in your components. Some examples of side effects are: fetching data, directly updating the DOM, and timers.
@@ -38,8 +50,6 @@
 
 ***redux saga***
 >- Redux Saga is a middleware library used to allow a Redux store to interact with resources outside of itself asynchronously. This includes making HTTP requests to external services, accessing browser storage, and executing I/O operations.
-
-
 
 
 ***context API vs Redux***
