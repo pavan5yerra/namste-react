@@ -4,13 +4,18 @@
 
 >- ***There are Three Stages - Mounting , Updating & Unmounting*** 
 >- ***In each stage there are two phases - Render & commit***
->   - ***Render Phase***
+>   - ***Render Phase(Reconciliation Phase)***
 >       - Component initialization with dummy data
 >       - Component rendered or mounted to dom with dummy data
 >       - Reconciliation happens in this phase
 >       - render method is used in class component and returing the JSX in functional component
+>       - keep track of new components
+>       - use singly linked list to traverse
+>       - uses async operations , can stop and start any time
 >   - ***Commit Phase***
 >       -  Dom updation happens in this phase
+>       -  cannot be stopped
+>       -  update DOM in small chunks for concurrency
 >       -  It do the batch updates to the DOM for Optimized performace
 >       -  we can do side effect in this phase like fetching API's , etc
 >       -  we use componentdidMount , componentDidUpdate , componentWillUnmount in class components and useEffect in functional components
@@ -21,14 +26,18 @@
 # Class components and its life cycles
 ```javascript
             class About extends Component {
+                //STEP 1 : intializing VDOM with dummy data
                 constructor(props) {
                     super(props);
                     //console.log("Parent - constructor");
                 }
+
+               //STEP3 : COMMIT PHASE
                 componentDidMount() {
                     // Best place to make an Api call
                     //console.log("Parent - componentDidMount");
                 }
+               //STEP2 : Reconciliation or render phase
                 render() {
                     //console.log("Parent - render");
                     return (
@@ -37,7 +46,9 @@
                         <p>
                         This is the Namaste React Live Course Chapter 07 - Finding the Path 🚀
                         </p>
-                        <ProfileFunctionalComponet />
+                        <Child1/>
+                        </Child2/>
+                        
                     </div>
                     );
                  }
