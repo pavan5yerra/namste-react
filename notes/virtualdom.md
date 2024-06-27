@@ -68,6 +68,26 @@
 
 ## What is React Fiber? 
 >- ***[ PLEASE READ](https://flexiple.com/react/react-fiber)***
+
+**Reconciler**
+- The reconciler in React is the process responsible for diffing the virtual DOM with the real DOM and making the necessary updates to the real DOM. This process ensures that only the parts of the DOM that have changed are updated, improving performance. 
+- The reconciler compares the current virtual DOM with the previous one, determines what has changed, and then updates the real DOM accordingly.
+- The reconciler can be considered as the algorithm or mechanism that handles this comparison and updating process.
+
+**Fiber**
+- React Fiber is a reimplementation of the reconciler in React 16 and above. Fiber is a complete overhaul of React’s core algorithm, designed to address some limitations of the previous stack-based reconciler. Key features of React Fiber include:
+
+**Incremental Rendering:**
+- Fiber allows React to split rendering work into chunks and spread it out over multiple frames. This helps keep the application responsive, especially during complex updates.
+
+**Priority Levels:** 
+- Fiber assigns different priority levels to different types of updates. This means that high-priority updates (like user interactions) can be processed before lower-priority updates (like data fetching), improving the responsiveness of the app.
+  
+**Better Error Handling:**
+- Fiber provides improved mechanisms for error handling, making it easier to handle errors gracefully.
+
+**Concurrency:** 
+- Fiber is designed with concurrency in mind, allowing React to pause and resume work as needed, making it more efficient and responsive.
     
 ## Why we need keys in React? When do we need keys in React?
 >- ***We need keys to make element unique and it helps react to identify the element***
