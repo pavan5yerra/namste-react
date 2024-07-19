@@ -69,12 +69,12 @@
 ## What is React Fiber? 
 >- ***[ PLEASE READ](https://flexiple.com/react/react-fiber)***
 
-**Reconciler**
+**Reconciler(previous diff algo)**
 - The reconciler in React is the process responsible for diffing the virtual DOM with the real DOM and making the necessary updates to the real DOM. This process ensures that only the parts of the DOM that have changed are updated, improving performance. 
 - The reconciler compares the current virtual DOM with the previous one, determines what has changed, and then updates the real DOM accordingly.
 - The reconciler can be considered as the algorithm or mechanism that handles this comparison and updating process.
 
-**Fiber**
+**Fiber (present diff algo)**
 - React Fiber is a reimplementation of the reconciler in React 16 and above. Fiber is a complete overhaul of React’s core algorithm, designed to address some limitations of the previous stack-based reconciler. Key features of React Fiber include:
 
 **Incremental Rendering:**
