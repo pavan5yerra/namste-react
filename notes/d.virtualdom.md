@@ -69,26 +69,143 @@
 ## What is React Fiber? 
 >- ***[ PLEASE READ](https://flexiple.com/react/react-fiber)***
 
-**Reconciler(previous diff algo)**
-- The reconciler in React is the process responsible for diffing the virtual DOM with the real DOM and making the necessary updates to the real DOM. This process ensures that only the parts of the DOM that have changed are updated, improving performance. 
-- The reconciler compares the current virtual DOM with the previous one, determines what has changed, and then updates the real DOM accordingly.
-- The reconciler can be considered as the algorithm or mechanism that handles this comparison and updating process.
+🧱 1. Stack Reconciler (React <16)
+The Stack Reconciler was based on the JavaScript call stack.
+It executed rendering work synchronously and recursively, without stopping.
 
-**Fiber (present diff algo)**
-- React Fiber is a reimplementation of the reconciler in React 16 and above. Fiber is a complete overhaul of React’s core algorithm, designed to address some limitations of the previous stack-based reconciler. Key features of React Fiber include:
+❌ Characteristics
+       Rendering is blocking
+       Cannot pause between renders
+       Cannot prioritize urgent updates
+       Large component trees freeze the UI
+       No concurrency support
+       
+🖼️ Diagram — Stack Reconciler Flow
 
-**Incremental Rendering:**
-- Fiber allows React to split rendering work into chunks and spread it out over multiple frames. This helps keep the application responsive, especially during complex updates.
+       Start <App>
+          ↓
+       Render <Header>
+          ↓
+       Render <Content>
+          ↓
+       Render all 5000 items (BLOCKING)
+          ↓
+       Render <Footer>
+          ↓
+       UI frozen until finished
+       
+**Example of Blocking Render**
+function BigList() {
+  const items = Array.from({ length: 5000 });
+  return items.map((_, i) => <div key={i}>{i}</div>);
+}
 
-**Priority Levels:** 
-- Fiber assigns different priority levels to different types of updates. This means that high-priority updates (like user interactions) can be processed before lower-priority updates (like data fetching), improving the responsiveness of the app.
-  
-**Better Error Handling:**
-- Fiber provides improved mechanisms for error handling, making it easier to handle errors gracefully.
+In old React, this would freeze the UI until all 5000 items were processed.
 
-**Concurrency:** 
-- Fiber is designed with concurrency in mind, allowing React to pause and resume work as needed, making it more efficient and responsive.
-    
+**🌱 2. Fiber Reconciler (React 16+)**
+
+React Fiber is a complete rewrite of the reconciler.
+Fiber = the new scheduling algorithm + the Fiber node data structure.
+
+✔** Characteristics**
+       Rendering is interruptible
+       Work is split into small chunks called fibers
+       React can pause, resume, and abort work
+       Supports priority levels
+       Enables Concurrent Mode
+       Keeps UI responsive during heavy renders
+       
+🖼️ Diagram — Fiber Reconciler Flow
+
+       Start <App>
+          ↓
+       Render <Header>
+          ↓
+       Render <Content>
+          ↓
+       Render 10 items → Pause → Yield to browser
+          ↓
+       Resume → Render next 10 items
+          ↓
+       Pause → Handle user input/scrolling
+          ↓
+       Resume until complete
+          ↓
+       Render <Footer>
+          ↓
+       UI stays responsive
+       
+🧬 3. Fiber Node Structure
+Every component becomes a Fiber node internally:
+
+       FiberNode {
+         type,              // function/class/host component
+         pendingProps,
+         memoizedState,
+         child,             // first child fiber
+         sibling,           // next fiber at the same level
+         return,            // parent fiber
+         updateQueue,
+         effectTag,         // side-effects
+         lanes              // priority
+       }
+       
+🌳 4. Fiber Tree Diagram (with pointers)
+
+                     [App Fiber]
+                          |
+          ---------------------------------
+          |               |               |
+    [Header]         [Content]         [Footer]
+                          |
+                -------------------
+                |        |        |
+             [Item1]  [Item2]  [Item3]
+                 |
+           [Child of Item1]
+           
+
+           
+Pointer relationships:
+
+child → first child
+sibling → next node at same level
+return → parent node
+
+🏎️ 5. Fiber Work Loop Timeline
+       Fiber breaks rendering into small pieces:
+       🟦 = work
+       ⬜ = pause
+       
+       Time →
+       App      🟦🟦
+       Header   🟦
+       Content  🟦🟦⬜🟦⬜🟦⬜
+       Item1    🟦⬜
+       Item2    🟦⬜
+       Item3    🟦⬜
+       Footer   🟦
+       Browser gets chances to run:
+       click events
+       scroll events
+       animations
+       input handlers
+       
+⏳ 6. Stack vs Fiber Timeline Comparison
+
+**❌ Old Stack Reconciler**
+
+       [=============== 300ms BLOCKING WORK ===============]
+UI frozen.
+
+**✔ Fiber Reconciler**
+
+       [===15ms===] pause  
+                    [===20ms===] pause  
+                                  [===12ms===] pause  
+                                                [===10ms===]
+UI stays smooth.
+
 ## Why we need keys in React? When do we need keys in React?
 >- ***We need keys to make element unique and it helps react to identify the element***
 >- ***We need keys when we try to render multiple duplicate elements***
@@ -105,6 +222,8 @@
         ))
     }
 ```
+
+
 ## Can we use index as keys in React?
 >- ***Please prefer to use unique id's from coming for data instead of indexes***
 >- ***If we use indexes ,in some usecases it will tamper while updating/deleting/adding the elements in list***
