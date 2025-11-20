@@ -118,6 +118,17 @@
         }
         }
 ```
+**Output:** considering commented logs as well
+
+             Child - Constructor <props.name>
+            Child - render <props.name>
+            NAMASTE REACT OP 
+            NAMASTE REACT OP 
+            NAMASTE REACT OP 
+            ...(repeats every 1s)
+            ComponentWillUnmount
+
+
 
 >- ***React Hooks is not a migic , its just an arrays [READ](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)***
 >- ***Please note useEffect will only called component render***
@@ -200,7 +211,14 @@
         return <div>{data}</div>;
         };
 ```
+**output** : 
 
+            rendering outside 
+            componenetdidmount ran with [] dependency
+            rendering outside 
+            componenetdidUpdate ran without dependency
+            componenetdidUpdate ran rendered
+            component will unmount
 
 ## making fetch request using useEffect hook
 ```javascript
